@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Malt Shop · Ephraim, Utah</title>
+<meta name="description" content="The Malt Shop — a family-run 1950s diner on Main Street in Ephraim, Utah since 1950. Burgers, thick-cut fries, and custom shakes & malts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Bungee&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#d62828; --red-dk:#a4161a; --cream:#fdf6e3; --ink:#1d1d1f; --mint:#6cc5b0;
+  --chrome:#cfd6dc; --pink:#f7b2bd; --card:#ffffff; --muted:#5b5b60; --bg:var(--cream);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#17131a; --card:#221c25; --ink:#f6efe2; --muted:#b9b1bd; --cream:#2a2230; }
+}
+:root[data-theme="dark"]{ --bg:#17131a; --card:#221c25; --ink:#f6efe2; --muted:#b9b1bd; --cream:#2a2230; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Work Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.checker{height:28px;background:
+  repeating-conic-gradient(var(--red) 0 25%, #fff 0 50%) 0 0/28px 28px;}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--red);color:#fff;box-shadow:0 3px 0 var(--red-dk)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-family:"Lobster",cursive;font-size:1.7rem;text-decoration:none;text-shadow:2px 2px 0 var(--red-dk)}
+nav ul{display:flex;gap:22px;list-style:none;font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em}
+nav ul a{text-decoration:none;opacity:.92}
+nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.call{background:#fff;color:var(--red);padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.9rem;white-space:nowrap}
+@media (max-width:720px){ nav ul{display:none} }
+
+/* hero */
+.hero{position:relative;padding:72px 0 88px;text-align:center;overflow:hidden;
+  background:radial-gradient(ellipse at top, rgba(214,40,40,.10), transparent 60%)}
+.sign{display:inline-block;padding:26px 40px 30px;border:6px solid var(--red);border-radius:28px;
+  background:var(--card);box-shadow:0 0 0 6px var(--chrome),0 18px 40px rgba(0,0,0,.18);position:relative}
+.sign small{font-family:"Bungee",sans-serif;letter-spacing:.3em;color:var(--mint);font-size:.8rem}
+.sign h1{font-family:"Lobster",cursive;font-weight:400;font-size:clamp(3rem,11vw,6.5rem);line-height:1;color:var(--red);
+  text-shadow:3px 3px 0 var(--pink), 0 0 18px rgba(214,40,40,.35);animation:flicker 6s infinite}
+.sign .since{font-family:"Bungee";font-size:clamp(.9rem,3vw,1.2rem);margin-top:6px;letter-spacing:.15em}
+@keyframes flicker{0%,92%,100%{opacity:1}93%{opacity:.55}94%{opacity:1}96%{opacity:.7}97%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.sign h1{animation:none}}
+.tag{max-width:620px;margin:34px auto 28px;font-size:1.15rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:3px solid var(--red);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red-dk)}
+.btn.ghost{color:var(--red);background:var(--card)}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-weight:700;font-size:.95rem;
+  background:var(--card);padding:8px 16px;border-radius:999px;border:2px solid var(--chrome)}
+.dot{width:11px;height:11px;border-radius:50%;background:#999}
+.dot.open{background:#2bb673;box-shadow:0 0 0 4px rgba(43,182,115,.2)}
+.dot.closed{background:var(--red)}
+.float{position:absolute;opacity:.9;pointer-events:none}
+.f1{left:4%;top:90px;width:110px;transform:rotate(-12deg)}
+.f2{right:5%;top:120px;width:120px;transform:rotate(10deg)}
+@media (max-width:900px){.float{display:none}}
+
+/* sections */
+section{padding:80px 0}
+.eyebrow{font-family:"Bungee";color:var(--red);letter-spacing:.2em;font-size:.8rem}
+h2{font-family:"Lobster",cursive;font-weight:400;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin:6px 0 18px}
+
+/* menu */
+#menu{background:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:30px}
+.mcard{background:var(--card);border-radius:20px;padding:26px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--red);position:relative}
+.mcard h3{font-family:"Bungee";font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.mcard h3 svg{width:38px;height:38px;flex:none}
+.mcard ul{list-style:none}
+.mcard li{padding:9px 0;border-bottom:2px dotted var(--chrome);display:flex;justify-content:space-between;gap:10px}
+.mcard li:last-child{border-bottom:0}
+.mcard li span{color:var(--muted);font-size:.88rem;text-align:right}
+.note{margin-top:22px;color:var(--muted);font-size:.92rem}
+
+/* shakes */
+.shakes{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media (max-width:820px){.shakes{grid-template-columns:1fr}}
+.builder{background:var(--card);border-radius:24px;padding:26px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--mint)}
+.builder h3{font-family:"Bungee";font-size:1rem;margin:14px 0 8px}
+.builder h3:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.order{margin-top:20px;padding:14px 16px;border-radius:14px;background:var(--cream);font-weight:700}
+.order em{font-style:normal;color:var(--red)}
+.cup{display:flex;justify-content:center}
+.cup svg{width:min(300px,80%);height:auto}
+.badge{display:inline-block;background:var(--mint);color:#0d3b32;font-weight:700;font-size:.78rem;padding:3px 10px;border-radius:999px;margin-left:6px;vertical-align:middle}
+
+/* story */
+#story{background:var(--red);color:#fff;position:relative}
+#story .eyebrow{color:var(--pink)}
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media (max-width:820px){.story-grid{grid-template-columns:1fr}}
+.timeline{list-style:none;border-left:4px dashed rgba(255,255,255,.5);padding-left:22px}
+.timeline li{margin-bottom:22px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-33px;top:6px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--red-dk)}
+.timeline b{font-family:"Bungee";display:block;font-size:1.3rem}
+#story p{opacity:.95}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media (max-width:820px){.visit{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:20px;padding:28px;border:3px solid var(--ink)}
+.hours{width:100%;border-collapse:collapse;font-size:1.02rem}
+.hours td{padding:11px 4px;border-bottom:2px dotted var(--chrome)}
+.hours td:last-child{text-align:right;font-weight:700}
+.hours tr.today td{color:var(--red)}
+.hours tr.today td:first-child::after{content:" · today";font-size:.8rem;font-weight:700}
+.addr{font-size:1.25rem;font-weight:700;margin:6px 0 16px}
+.contact a{display:flex;align-items:center;gap:10px;padding:12px 0;text-decoration:none;font-weight:500;border-bottom:2px dotted var(--chrome)}
+.contact a:hover{color:var(--red)}
+.contact svg{width:22px;height:22px;flex:none;color:var(--red)}
+
+footer{background:var(--ink);color:#f6efe2;text-align:center;padding:36px 16px 40px}
+:root[data-theme="dark"] footer{background:#0d0a0f}
+footer .logo{font-size:2rem}
+footer p{opacity:.7;font-size:.9rem;margin-top:6px}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">The Malt Shop</a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#shakes">Shakes</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="call" href="tel:+14352834101">📞 Call</a>
+  </div>
+</nav>
+<div class="checker" aria-hidden="true"></div>
+
+<header class="hero" id="top">
+  <!-- floating illustrations -->
+  <svg class="float f1" viewBox="0 0 100 140" aria-hidden="true">
+    <path d="M58 2 L52 40" stroke="#d62828" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="50" cy="42" rx="34" ry="12" fill="#fff" stroke="#1d1d1f" stroke-width="3"/>
+    <circle cx="50" cy="28" r="7" fill="#d62828"/>
+    <path d="M18 46 L28 128 Q50 136 72 128 L82 46 Z" fill="#f7b2bd" stroke="#1d1d1f" stroke-width="3"/>
+    <path d="M22 70 H78" stroke="#fff" stroke-width="5" opacity=".6"/>
+  </svg>
+  <svg class="float f2" viewBox="0 0 120 100" aria-hidden="true">
+    <path d="M10 48 Q60 -10 110 48 Z" fill="#e9a23b" stroke="#1d1d1f" stroke-width="3"/>
+    <circle cx="40" cy="30" r="2.5" fill="#fff"/><circle cx="62" cy="22" r="2.5" fill="#fff"/><circle cx="80" cy="32" r="2.5" fill="#fff"/>
+    <rect x="6" y="48" width="108" height="9" rx="4" fill="#6cc5b0" stroke="#1d1d1f" stroke-width="3"/>
+    <rect x="8" y="57" width="104" height="13" rx="5" fill="#d62828" stroke="#f4c430" stroke-width="3"/>
+    <rect x="6" y="70" width="108" height="9" rx="4" fill="#ffd166" stroke="#1d1d1f" stroke-width="3"/>
+    <path d="M10 79 Q60 104 110 79 Z" fill="#e9a23b" stroke="#1d1d1f" stroke-width="3"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="sign">
+      <small>EPHRAIM · UTAH</small>
+      <h1>The Malt Shop</h1>
+      <div class="since">★ SINCE 1950 ★</div>
+    </div>
+    <p class="tag">Burgers off the grill, thick-cut fries, and shakes so thick the straw stands up on its own — served at the same Main Street counter for more than seventy years.</p>
+    <div class="btns">
+      <a class="btn primary" href="#menu">See the Menu</a>
+      <a class="btn ghost" href="#visit">Hours &amp; Directions</a>
+    </div>
+    <div><span class="status" id="status"><span class="dot" id="dot"></span><span id="statusText">Checking hours…</span></span></div>
+  </div>
+</header>
+
+<div class="checker" aria-hidden="true"></div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="eyebrow">FROM THE GRILL</div>
+    <h2>Menu Favorites</h2>
+    <div class="menu-grid">
+      <article class="mcard">
+        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 19 Q20 2 36 19Z" fill="#e9a23b" stroke="currentColor" stroke-width="2"/><rect x="3" y="19" width="34" height="4" rx="2" fill="#6cc5b0"/><rect x="4" y="23" width="32" height="5" rx="2" fill="#d62828"/><path d="M4 28 Q20 38 36 28Z" fill="#e9a23b" stroke="currentColor" stroke-width="2"/></svg>Burgers</h3>
+        <ul>
+          <li>King Burger <span>house classic</span></li>
+          <li>Bacon Cheeseburger</li>
+          <li>Mushroom Swiss</li>
+          <li>Slam Dunk <span>double large patty</span></li>
+        </ul>
+      </article>
+      <article class="mcard">
+        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26 L20 8 L36 26 Z" fill="#ffd166" stroke="currentColor" stroke-width="2"/><path d="M8 26 H32 V31 H8Z" fill="#d62828"/></svg>Sandwiches &amp; More</h3>
+        <ul>
+          <li>Halibut <span>several ways</span></li>
+          <li>Hawaiian Pork Sandwich</li>
+          <li>Gyros</li>
+        </ul>
+      </article>
+      <article class="mcard">
+        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 16 H31 L28 36 H12Z" fill="#d62828" stroke="currentColor" stroke-width="2"/><path d="M13 16 V5 M18 16 V3 M23 16 V6 M28 16 V4" stroke="#f4c430" stroke-width="3" stroke-linecap="round"/></svg>Sides</h3>
+        <ul>
+          <li>Thick-Cut Fries</li>
+          <li>Onion Rings</li>
+          <li>Tater Tots</li>
+          <li>Sweet Potato Fries <span>deep-fried</span></li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">Ask at the counter for today's full menu and prices.</p>
+  </div>
+</section>
+
+<section id="shakes">
+  <div class="wrap shakes">
+    <div>
+      <div class="eyebrow">THE MAIN EVENT</div>
+      <h2>Shakes &amp; Malts, Your Way</h2>
+      <p>Pick a base, pile on the mix-ins, and we'll blend it thick. Regulars swear by the Raspberry Cheesecake — and in the fall, don't miss our <strong>Gluten-Free Pumpkin Oreo</strong>.</p>
+      <div class="builder" style="margin-top:24px">
+        <h3>1 · Shake or malt?</h3>
+        <div class="chips" data-group="base" data-single>
+          <button class="chip" aria-pressed="true">Shake</button>
+          <button class="chip" aria-pressed="false">Malt</button>
+        </div>
+        <h3>2 · Mix-ins</h3>
+        <div class="chips" data-group="mix">
+          <button class="chip" aria-pressed="true">Raspberry Cheesecake</button>
+          <button class="chip" aria-pressed="false">Pumpkin Oreo (GF) 🎃</button>
+          <button class="chip" aria-pressed="false">Oreo</button>
+          <button class="chip" aria-pressed="false">Strawberry</button>
+          <button class="chip" aria-pressed="false">Chocolate</button>
+          <button class="chip" aria-pressed="false">Peanut Butter</button>
+          <button class="chip" aria-pressed="false">Banana</button>
+        </div>
+        <div class="order" id="order" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="cup" aria-hidden="true">
+      <svg viewBox="0 0 200 300">
+        <path d="M118 8 L104 90" stroke="#d62828" stroke-width="9" stroke-linecap="round"/>
+        <path d="M118 8 L104 90" stroke="#fff" stroke-width="3" stroke-dasharray="6 8"/>
+        <path d="M30 92 Q40 50 70 64 Q90 30 120 58 Q160 44 170 92 Z" fill="#fff" stroke="#1d1d1f" stroke-width="4"/>
+        <circle cx="100" cy="44" r="13" fill="#d62828" stroke="#1d1d1f" stroke-width="3"/>
+        <path d="M100 31 Q104 18 114 14" stroke="#2d6a4f" stroke-width="3" fill="none"/>
+        <path id="shakeFill" d="M26 96 L46 260 Q100 276 154 260 L174 96 Z" fill="#f7b2bd" stroke="#1d1d1f" stroke-width="4"/>
+        <path d="M34 130 H166" stroke="#fff" stroke-width="7" opacity=".45"/>
+        <path d="M60 268 Q100 300 140 268 L132 286 Q100 296 68 286Z" fill="#cfd6dc" stroke="#1d1d1f" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story-grid">
+    <div>
+      <div class="eyebrow">OUR STORY</div>
+      <h2>Same Counter. New Generation.</h2>
+      <p>The Malt Shop has been a Main Street landmark in Ephraim since 1950 — the red-and-white checkers, the counter stools, and the roadside sign out front are all part of the family. In 2024, after decades behind the grill, our longtime owners retired and handed the spatula to their daughter and son-in-law, who are keeping every tradition that made this place special.</p>
+    </div>
+    <ul class="timeline">
+      <li><b>1950</b>The Malt Shop opens its doors on Main Street.</li>
+      <li><b>Decades</b>Generations of Ephraim families and Snow College students grab a seat at the counter.</li>
+      <li><b>2024</b>The founding family passes the shop to the next generation.</li>
+      <li><b>Today</b>Still flipping burgers and blending malts — come say hi.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="eyebrow">COME ON IN</div>
+    <h2>Hours &amp; Location</h2>
+    <div class="visit">
+      <div class="panel">
+        <table class="hours" aria-label="Hours of operation">
+          <tbody id="hoursBody"></tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">FIND US</div>
+        <p class="addr">150 N Main St<br>Ephraim, UT 84627</p>
+        <div class="contact">
+          <a href="https://www.google.com/maps/search/?api=1&query=The+Malt+Shop+150+N+Main+St+Ephraim+UT+84627" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>Get directions</a>
+          <a href="tel:+14352834101">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(435) 283-4101</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Follow us on Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+<footer>
+  <div class="logo">The Malt Shop</div>
+  <p>150 N Main St, Ephraim, UT · (435) 283-4101 · Family-owned since 1950</p>
+</footer>
+
+<script>
+// Hours (0 = Sunday)
+const HOURS = {0:null,1:[11,20],2:[11,20],3:[11,20],4:[11,20],5:[11,21],6:[11,21]};
+const NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const fmt = h => (h>12?h-12:h)+":00 "+(h>=12?"PM":"AM");
+
+function denverNow(){
+  const parts = new Intl.DateTimeFormat("en-US",{timeZone:"America/Denver",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
+  const get = t => parts.find(p=>p.type===t).value;
+  const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(get("weekday"));
+  return {day, hour: (+get("hour"))%24 + (+get("minute"))/60};
+}
+function render(){
+  const {day,hour} = denverNow();
+  const body = document.getElementById("hoursBody");
+  body.innerHTML = [1,2,3,4,5,6,0].map(d=>{
+    const h = HOURS[d];
+    return `<tr class="${d===day?'today':''}"><td>${NAMES[d]}</td><td>${h?fmt(h[0])+" – "+fmt(h[1]):"Closed"}</td></tr>`;
+  }).join("");
+  const today = HOURS[day], dot = document.getElementById("dot"), txt = document.getElementById("statusText");
+  if(today && hour>=today[0] && hour<today[1]){
+    dot.className="dot open"; txt.textContent = "Open now · until "+fmt(today[1]);
+  } else {
+    let n=day, label="";
+    for(let i=1;i<=7;i++){ n=(day+i)%7; if(HOURS[n]) break; }
+    if(today && hour<today[0]) label = "today at "+fmt(today[0]);
+    else label = (n===(day+1)%7?"tomorrow":NAMES[n])+" at "+fmt(HOURS[n][0]);
+    dot.className="dot closed"; txt.textContent = "Closed · opens "+label;
+  }
+}
+render(); setInterval(render,60000);
+
+// Shake builder
+const COLORS = {"Raspberry Cheesecake":"#f28ba8","Pumpkin Oreo (GF) 🎃":"#e9a23b","Oreo":"#bdb6ad","Strawberry":"#f7b2bd","Chocolate":"#8d5a3b","Peanut Butter":"#d9a066","Banana":"#f6e27a"};
+document.querySelectorAll(".chips").forEach(g=>{
+  g.addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    if(g.hasAttribute("data-single")){ g.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed","false")); b.setAttribute("aria-pressed","true"); }
+    else b.setAttribute("aria-pressed", b.getAttribute("aria-pressed")==="true"?"false":"true");
+    updateOrder();
+  });
+});
+function updateOrder(){
+  const base = document.querySelector('[data-group="base"] [aria-pressed="true"]').textContent;
+  const mix = [...document.querySelectorAll('[data-group="mix"] [aria-pressed="true"]')].map(b=>b.textContent);
+  document.getElementById("order").innerHTML = mix.length
+    ? `Your order: a <em>${mix.join(" + ")}</em> ${base.toLowerCase()} 🥤`
+    : `Your order: a classic vanilla ${base.toLowerCase()} 🥤`;
+  document.getElementById("shakeFill").setAttribute("fill", mix.length ? COLORS[mix[mix.length-1]] : "#fbf3dc");
+}
+updateOrder();
+</script>
+</body>
+</html>
